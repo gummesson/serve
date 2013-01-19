@@ -8,6 +8,7 @@
     #                    and changes the extension to .html.
     #
     #  raw_template    = The HTML template file.
+    #
     #  parsed_content  = Parses the file's content to HTML.
     #  static_content  = Puts the parsed_content in the raw_template
     #                    by replacing the content delimiter.
