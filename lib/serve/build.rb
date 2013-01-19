@@ -1,7 +1,7 @@
 ﻿module Serve
   class Build
     #
-    # Process the content
+    # Processes the content
     #
     #  raw_content     = The file's Markdown content.
     #  parsed_filename = Removes the content folder from the filename
