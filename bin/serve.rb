@@ -9,9 +9,9 @@ require 'serve'
 
 # Directories
 dir = {
-  :content  => 'content',
-  :template => 'template',
-  :static   => 'static'
+  :content  => "content",
+  :template => "template",
+  :static   => "static"
 }
 
 # Options

@@ -21,7 +21,7 @@
           Dir.mkdir(static_dir)
         end
 
-        File.open("#{static_dir}/#{parsed_filename}","w") do |file|
+        File.open("#{static_dir}/#{parsed_filename}", "w") do |file|
           Dir.glob("#{template_dir}/*.html") do |filename|
             raw_template = Read.content(filename)
 

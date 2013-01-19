@@ -3,7 +3,7 @@ module Serve
     # Parses the filename
     def self.filename(filename)
       filename = File.basename(filename)
-      filename.gsub(/\..*$/,".html")
+      filename.gsub(/\..*$/, ".html")
     end
 
     # Parses the Markdown content
