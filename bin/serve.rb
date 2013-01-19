@@ -32,4 +32,4 @@ OptionParser.new do |opt|
 end.parse!
 
 # Initialize Serve
-Serve::Build.run(dir[:content], dir[:template], dir[:static])
+Serve::Init.run(dir[:content], dir[:template], dir[:static])

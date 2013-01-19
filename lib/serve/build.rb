@@ -1,12 +1,6 @@
 ﻿module Serve
   class Build
-    # Runs Serve
-    def self.run(content_dir, template_dir, static_dir)
-      self.process(content_dir, template_dir, static_dir)
-      self.transfer(template_dir, static_dir)
-      self.done(static_dir)
-    end
-
+    #
     # Process the content
     #
     #  raw_content     = The file's Markdown content.
