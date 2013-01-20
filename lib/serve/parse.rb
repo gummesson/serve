@@ -13,7 +13,7 @@ module Serve
 
     # Parses the HTML template
     def self.template(raw_template, parsed_content)
-      raw_template.gsub("[CONTENT]", parsed_content)
+      raw_template.sub("[CONTENT]", parsed_content)
     end
   end
 end
