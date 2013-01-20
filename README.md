@@ -6,9 +6,9 @@
 
 *Serve* first scans the content directory (default: `content`) where it reads the content of every single file and parses their filenames. It'll then create the static directory (default: `static`) if it doesn't exist.
 
-After that it'll find the HTML template file in the template directory (default: `template`). It'll then parse the content from the content directory  and replace the content delimiter in the HTML template file with the parsed content.
+After that it'll find the HTML template file in the template directory (default: `template`). It doesn't matter what you've named your template file, but it's important that you only have one HTML file in that specific directory. It'll then parse the content from the content directory  and replace the content delimiter in the HTML template file with the parsed content.
 
-It'll then save each and every file in the static directory (default: `static`) and then copy the CSS file(s) in the template directory to the static directory.
+It'll then save each and every file in the static directory (default: `static`) and then copy the CSS file(s) in the template directory to the static directory. It'll also copy JS, PNG, JPG, GIF and ICO files if they're placed in that directory.
 
 ### Delimiter
 

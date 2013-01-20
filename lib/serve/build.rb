@@ -35,10 +35,10 @@
       end
     end
 
-    # Transfers the CSS and JS file(s)
+    # Transfers the CSS, JS file and image file(s)
     def self.transfer(template_dir, static_dir)
-      Dir["#{template_dir}/*.{css,js}"].each do |filename|
-        FileUtils.cp(filename, static_dir)
+      Dir["#{template_dir}/*.{css,js,png,jpg,gif,ico}"].each do |file|
+        FileUtils.cp(file, static_dir)
       end
     end
 
