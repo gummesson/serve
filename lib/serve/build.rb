@@ -35,9 +35,9 @@
       end
     end
 
-    # Transfers the CSS file(s)
+    # Transfers the CSS and JS file(s)
     def self.transfer(template_dir, static_dir)
-      Dir.glob("#{template_dir}/*.css") do |filename|
+      Dir["#{template_dir}/*.{css,js}"].each do |filename|
         FileUtils.cp(filename, static_dir)
       end
     end
