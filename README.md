@@ -4,7 +4,7 @@
 
 ## How it works
 
-*Serve* first scans the content directory (default: `content`) where it reads the content of every single file and parses their filenames. It'll then create the static directory (default: `static`) if it doesn't exist.
+*Serve* first scans the content directory (default: `content`) where it reads the content of every single file and parses their filenames. Your content files can have any extension you'd like, the important thing is that they're actually written in [Markdown](http://daringfireball.net/projects/markdown/ "Markdown"). It'll then create the static directory (default: `static`) if it doesn't exist.
 
 After that it'll find the HTML template file in the template directory (default: `template`). It doesn't matter what you've named your template file, but it's important that you only have one HTML file in that specific directory. It'll then parse the content from the content directory  and replace the content delimiter in the HTML template file with the parsed content.
 
