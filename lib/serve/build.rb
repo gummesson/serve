@@ -4,14 +4,14 @@
     # Processes the content
     #
     #  raw_content     = The file's Markdown content.
-    #  parsed_filename = Removes the content folder from the filename
-    #                    and changes the extension to .html.
+    #  parsed_filename = The filename without the content directory in it's
+    #                    name and with the extension changed to .html.
     #
     #  raw_template    = The HTML template file.
     #
-    #  parsed_content  = Parses the file's content to HTML.
-    #  static_content  = Puts the parsed_content in the raw_template
-    #                    by replacing the content delimiter.
+    #  parsed_content  = The content parsed to HTML.
+    #  static_content  = The parsed content and the HTML template file merged
+    #                    together.
     #
     def self.process(content_dir, template_dir, static_dir)
       Dir["#{content_dir}/*"].each do |filename|
@@ -36,13 +36,19 @@
     end
 
     # Transfers the CSS, JS file and image file(s)
+    #
+    #  file = All the files in the template directory except the HTML template.
+    #
     def self.transfer(template_dir, static_dir)
       Dir["#{template_dir}/*.{css,js,png,jpg,gif,ico}"].each do |file|
         FileUtils.cp(file, static_dir)
       end
     end
 
-    # Displays a message
+    # Displays a "successful build" message
+    #
+    #  dir = The chosen directory for the static files.
+    #
     def self.done(dir)
       puts "Your site was served in #{Dir.pwd}/#{dir}."
     end

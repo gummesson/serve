@@ -31,5 +31,5 @@ OptionParser.new do |opt|
   end
 end.parse!
 
-# Initialize Serve
+# Run Serve with the given arguments
 Serve::Init.run(dir[:content], dir[:template], dir[:static])
