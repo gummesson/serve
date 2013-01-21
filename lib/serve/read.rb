@@ -1,6 +1,5 @@
 module Serve
   class Read
-    #
     # Reads the content
     #
     #  filename = The given filename. Returns the file's Markdown content.

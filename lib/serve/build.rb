@@ -1,6 +1,5 @@
 ﻿module Serve
   class Build
-    #
     # Processes the content
     #
     #  raw_content     = The file's Markdown content.

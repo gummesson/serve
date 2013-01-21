@@ -11,7 +11,6 @@ require 'serve/parse'
 
 module Serve
   class Init
-    #
     # Builds the whole site by running it through the build process.
     #
     #  content_dir  = The given content directory.

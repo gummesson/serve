@@ -1,6 +1,5 @@
 module Serve
   class Parse
-    #
     # Parses the filename
     #
     #  filename = The given filename. Returns a parsed filename without the
