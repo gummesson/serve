@@ -3,18 +3,19 @@ module Serve
     # Parses the filename
     #
     #  filename = The given filename. Returns a parsed filename without the
-    #             content directory in it's name and changes the extension to
+    #             content directory in it's name, all the letters transformed
+    #             to downcase, no whitespace and changes the extension to
     #             .html.
     #
     def self.filename(filename)
       filename = File.basename(filename)
-      filename.sub(/\..*$/, ".html")
+      filename.downcase.gsub(/\s/, "-").sub(/\..*$/, ".html")
     end
 
     # Parses the Markdown content
     #
     #  content = The given content. Returns the the Markdown content parsed to
-    #            HTML via the kramdown gem.
+    #            HTML via the kramdown gem without auto ID's.
     #
     def self.content(content)
       Kramdown::Document.new(content, :auto_ids => false).to_html
