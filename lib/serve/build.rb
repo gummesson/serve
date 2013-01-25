@@ -3,6 +3,7 @@
     # Processes the content
     #
     #  raw_content     = The file's Markdown content.
+    #  raw_filename    = The file's filename.
     #  parsed_filename = The filename without the content directory in it's
     #                    name and with the extension changed to .html.
     #
@@ -15,21 +16,17 @@
     def self.process(content_dir, template_dir, static_dir)
       Dir["#{content_dir}/*"].each do |filename|
         raw_content     = Read.content(filename)
-        parsed_filename = Parse.filename(filename)
+        raw_filename    = File.basename(filename)
+        parsed_filename = Parse.filename(raw_filename)
 
-        unless File.exists?(static_dir)
-          Dir.mkdir(static_dir)
-        end
+        Dir.mkdir(static_dir) unless File.exists?(static_dir)
 
-        File.open("#{static_dir}/#{parsed_filename}", "w") do |file|
-          Dir.glob("#{template_dir}/*.html") do |filename|
-            raw_template = Read.content(filename)
+        Dir.glob("#{template_dir}/*.html") do |filename|
+          raw_template   = Read.content(filename)
+          parsed_content = Parse.content(raw_content)
+          static_content = Parse.template(raw_template, parsed_content)
 
-            parsed_content = Parse.content(raw_content)
-            static_content = Parse.template(raw_template, parsed_content)
-
-            file.puts(static_content)
-          end
+          File.write("#{static_dir}/#{parsed_filename}", static_content)
         end
       end
     end

@@ -2,14 +2,18 @@ module Serve
   class Parse
     # Parses the filename
     #
-    #  filename = The given filename. Returns a parsed filename without the
-    #             content directory in it's name, all the letters transformed
-    #             to downcase, no whitespace and changes the extension to
-    #             .html.
+    #  special_chars = ', !, ?, : and trailing whitespace.
+    #
+    #  filename      = The given filename. Returns a parsed filename with all
+    #                  the letters transformed to downcase, stripped from all
+    #                  the special characters, no whitespace and a changed
+    #                  extension to .html.
     #
     def self.filename(filename)
-      filename = File.basename(filename)
-      filename.downcase.gsub(/\s/, "-").sub(/\..*$/, ".html")
+      special_chars = /(\'|\!|\?|\:|\s\z)/
+
+      filename.downcase
+      filename.gsub(special_chars, "").gsub(/\s/, "-").sub(/\..*$/, ".html")
     end
 
     # Parses the Markdown content
