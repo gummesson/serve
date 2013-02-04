@@ -30,10 +30,8 @@ module Serve
       when "redcarpet"
         require 'redcarpet'
         render_html    = Redcarpet::Render::HTML
-        render_options = {
-          :no_intra_emphasis  => true,
-          :fenced_code_blocks => true
-        }
+        render_options = { :no_intra_emphasis  => true,
+                           :fenced_code_blocks => true }
 
         redcarpet = Redcarpet::Markdown.new(render_html, render_options)
         return redcarpet.render(content)
