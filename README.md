@@ -27,10 +27,19 @@ Think of it as a poor man's [Liquid](http://liquidmarkup.org/ "Liquid") template
 	-c --content     The content directory
 	-t --template    The template directory
 	-s --static      The static directory
+	-p --parser      The Markdown parser
 
 ## Dependencies
 
+**Default:**
+
 - [kramdown](http://kramdown.rubyforge.org/ "kramdown")
+
+**Others/Development:**
+
+- [Redcarpet](https://github.com/vmg/redcarpet "Redcarpet")
+- [RDiscount](https://github.com/rtomayko/rdiscount "RDiscount")
+- [Maruku](http://maruku.rubyforge.org/ "Maruku")
 
 ## License
 

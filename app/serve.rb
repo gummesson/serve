@@ -7,11 +7,16 @@ require 'optparse'
 # Load Serve
 require 'serve'
 
-# Directories
-dir = {
+# Directories and Markdown parser
+#
+#  Default: kramdown
+#   Others: redcarpet, rdiscount or maruku
+#
+options = {
   :content  => "content",
   :template => "template",
-  :static   => "static"
+  :static   => "static",
+  :parser   => "kramdown"
 }
 
 # Options
@@ -19,17 +24,21 @@ OptionParser.new do |opt|
   opt.banner = "Usage: serve [options]"
 
   opt.on("-c", "--content DIRECTORY", "Content directory") do |c|
-    dir[:content] = c
+    options[:content] = c
   end
 
   opt.on("-t", "--template DIRECTORY", "Template directory") do |t|
-    dir[:template] = t
+    options[:template] = t
   end
 
   opt.on("-s", "--static DIRECTORY", "Static directory") do |s|
-    dir[:static] = s
+    options[:static] = s
+  end
+
+  opt.on("-p", "--parser GEM", "Markdown parser: kramdown, redcarpet, rdiscount or maruku") do |p|
+    options[:parser] = p
   end
 end.parse!
 
 # Run Serve with the given arguments
-Serve::Init.start(dir[:content], dir[:template], dir[:static])
+Serve::Init.start(options[:content], options[:template], options[:static], options[:parser])

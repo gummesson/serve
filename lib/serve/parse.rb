@@ -11,18 +11,44 @@ module Serve
     #
     def self.filename(filename)
       special_chars = /(\'|\!|\?|\:|\s\z)/
-
-      filename.downcase
-      filename.gsub(special_chars, "").gsub(/\s/, "-").sub(/\..*$/, ".html")
+      filename.downcase.gsub(special_chars, "").gsub(/\s/, "-").sub(/\..*$/, ".html")
     end
 
     # Parses the Markdown content
     #
     #  content = The given content. Returns the the Markdown content parsed to
-    #            HTML via the kramdown gem without auto ID's.
+    #            HTML via the chosen gem.
     #
-    def self.content(content)
-      Kramdown::Document.new(content, :auto_ids => false).to_html
+    #  parser  = The given Markdown parser gem.
+    #
+    def self.content(content, parser)
+    case parser
+      when "kramdown"
+        require 'kramdown'
+        return Kramdown::Document.new(content, :auto_ids => false).to_html
+
+      when "redcarpet"
+        require 'redcarpet'
+        render_html    = Redcarpet::Render::HTML
+        render_options = {
+          :no_intra_emphasis  => true,
+          :fenced_code_blocks => true
+        }
+
+        redcarpet = Redcarpet::Markdown.new(render_html, render_options)
+        return redcarpet.render(content)
+
+      when "rdiscount"
+        require 'rdiscount'
+        return RDiscount.new(content).to_html
+
+      when "maruku"
+        require 'maruku'
+        return Maruku.new(content).to_html_document
+
+      else
+        raise "Please choose a valid Markdown parser. For more information, see 'serve --help'."
+      end
     end
 
     # Parses the HTML template

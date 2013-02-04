@@ -13,7 +13,7 @@
     #  static_content  = The parsed content and the HTML template file merged
     #                    together.
     #
-    def self.process(content_dir, template_dir, static_dir)
+    def self.process(content_dir, template_dir, static_dir, parser)
       Dir["#{content_dir}/*"].each do |filename|
         raw_content     = Read.content(filename)
         raw_filename    = File.basename(filename)
@@ -23,7 +23,7 @@
 
         Dir.glob("#{template_dir}/*.html") do |filename|
           raw_template   = Read.content(filename)
-          parsed_content = Parse.content(raw_content)
+          parsed_content = Parse.content(raw_content, parser)
           static_content = Parse.template(raw_template, parsed_content)
 
           File.write("#{static_dir}/#{parsed_filename}", static_content)

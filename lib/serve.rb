@@ -1,7 +1,4 @@
-﻿# Gems
-require 'kramdown'
-
-# Standard Library
+﻿# Standard Library
 require 'fileutils'
 
 # App Library
@@ -22,8 +19,11 @@ module Serve
     #  static_dir   = The given static directory.
     #                 Default: "static".
     #
-    def self.start(content_dir, template_dir, static_dir)
-      Build.process(content_dir, template_dir, static_dir)
+    #  parser       = The given Markdown parser.
+    #                 Default: kramdown.
+    #
+    def self.start(content_dir, template_dir, static_dir, parser)
+      Build.process(content_dir, template_dir, static_dir, parser)
       Build.transfer(template_dir, static_dir)
       Build.done(static_dir)
     end
