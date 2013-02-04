@@ -22,7 +22,7 @@ module Serve
     #  static_dir   = The given static directory.
     #                 Default: "static".
     #
-    def self.run(content_dir, template_dir, static_dir)
+    def self.start(content_dir, template_dir, static_dir)
       Build.process(content_dir, template_dir, static_dir)
       Build.transfer(template_dir, static_dir)
       Build.done(static_dir)

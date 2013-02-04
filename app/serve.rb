@@ -18,18 +18,18 @@ dir = {
 OptionParser.new do |opt|
   opt.banner = "Usage: serve [options]"
 
-  opt.on("-c", "--content CONTENT", "Content directory") do |c|
+  opt.on("-c", "--content DIRECTORY", "Content directory") do |c|
     dir[:content] = c
   end
 
-  opt.on("-t", "--template TEMPLATE", "Template directory") do |t|
+  opt.on("-t", "--template DIRECTORY", "Template directory") do |t|
     dir[:template] = t
   end
 
-  opt.on("-s", "--static STATIC", "Static directory") do |s|
+  opt.on("-s", "--static DIRECTORY", "Static directory") do |s|
     dir[:static] = s
   end
 end.parse!
 
 # Run Serve with the given arguments
-Serve::Init.run(dir[:content], dir[:template], dir[:static])
+Serve::Init.start(dir[:content], dir[:template], dir[:static])
