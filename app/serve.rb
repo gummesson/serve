@@ -35,7 +35,7 @@ OptionParser.new do |opt|
     options[:static] = s
   end
 
-  opt.on("-p", "--parser GEM", "Markdown parser: kramdown, redcarpet, rdiscount or maruku") do |p|
+  opt.on("-p", "--parser GEM", "kramdown, redcarpet, rdiscount or maruku") do |p|
     options[:parser] = p
   end
 end.parse!
