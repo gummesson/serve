@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 # Add lib to path
 $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__) + "/../lib")
 
