@@ -15,14 +15,14 @@
     #
     def self.process(content_dir, template_dir, static_dir, parser)
       Dir["#{content_dir}/*"].each do |filename|
-        raw_content     = Read.content(filename)
+        raw_content     = File.read(filename)
         raw_filename    = File.basename(filename)
         parsed_filename = Parse.filename(raw_filename)
 
         Dir.mkdir(static_dir) unless File.exists?(static_dir)
 
         Dir.glob("#{template_dir}/*.html") do |filename|
-          raw_template   = Read.content(filename)
+          raw_template   = File.read(filename)
           parsed_content = Parse.content(raw_content, parser)
           static_content = Parse.template(raw_template, parsed_content)
 
