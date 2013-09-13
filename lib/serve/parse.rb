@@ -25,20 +25,24 @@ module Serve
     case parser
       when "kramdown"
         require 'kramdown'
-        return Kramdown::Document.new(content, :auto_ids => false).to_html
+        Kramdown::Document.new(content, :auto_ids => false).to_html
+
       when "redcarpet"
         require 'redcarpet'
         render_html    = Redcarpet::Render::HTML
         render_options = { :no_intra_emphasis  => true,
                            :fenced_code_blocks => true }
         redcarpet = Redcarpet::Markdown.new(render_html, render_options)
-        return redcarpet.render(content)
+        redcarpet.render(content)
+
       when "rdiscount"
         require 'rdiscount'
-        return RDiscount.new(content).to_html
+        RDiscount.new(content).to_html
+
       when "maruku"
         require 'maruku'
-        return Maruku.new(content).to_html_document
+        Maruku.new(content).to_html_document
+
       else
         raise "Please choose a valid Markdown parser. For more information, see 'serve --help'."
       end
