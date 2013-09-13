@@ -31,7 +31,7 @@
       end
     end
 
-    # Transfers the CSS, JS file and image file(s)
+    # Transfers the CSS, JS and image file(s)
     #
     #  file = All the files in the template directory except the HTML template.
     #
